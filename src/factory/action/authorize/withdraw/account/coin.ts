@@ -3,7 +3,7 @@ import * as pecorinoFactory from '@motionpicture/pecorino-factory';
 import * as ActionFactory from '../../../../action';
 import ActionType from '../../../../actionType';
 import { AccountGoodType, IAccount } from '../../../../ownershipInfo';
-import { ITransaction as ITransferCoinTransaction } from '../../../../transaction/transferCoin';
+import { ITransaction as IReturnCoinTransaction } from '../../../../transaction/returnCoin';
 import { ITransaction as IWithdrawCoinTransaction } from '../../../../transaction/withdrawCoin';
 import * as AuthorizeActionFactory from '../../../authorize';
 import AuthorizeWithdrawActionObjectType from '../objectType';
@@ -29,7 +29,7 @@ export interface IObject {
     fromLocation: ILocation;
     notes: string;
 }
-export type IPurpose = ITransferCoinTransaction | IWithdrawCoinTransaction;
+export type IPurpose = IReturnCoinTransaction | IWithdrawCoinTransaction;
 export type IError = any;
 /**
  * コイン口座出金承認アクション属性インターフェース

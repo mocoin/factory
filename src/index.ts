@@ -51,7 +51,9 @@ import * as TaskExecutionResultFactory from './factory/taskExecutionResult';
 import TaskName from './factory/taskName';
 import TaskStatus from './factory/taskStatus';
 import * as TransactionFactory from './factory/transaction';
+import * as BuyCoinTransactionFactory from './factory/transaction/buyCoin';
 import * as DepositCoinTransactionFactory from './factory/transaction/depositCoin';
+import * as ReturnCoinTransactionFactory from './factory/transaction/returnCoin';
 import * as TransferCoinTransactionFactory from './factory/transaction/transferCoin';
 import * as WithdrawCoinTransactionFactory from './factory/transaction/withdrawCoin';
 import TransactionStatusType from './factory/transactionStatusType';
@@ -171,31 +173,43 @@ export import taskName = TaskName;
 export import taskStatus = TaskStatus;
 export namespace transaction {
     export type IStartParams<T> =
+        T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IStartParams :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IStartParams :
+        T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.IStartParams :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IStartParams :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IStartParams :
         TransactionFactory.IStartParams<TransactionType, any, any, any>;
     export type IAttributes<T> =
+        T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IAttributes :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IAttributes :
+        T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.IAttributes :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IAttributes :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IAttributes :
         TransactionFactory.IAttributes<any, any, any, any>;
     export type ITransaction<T> =
+        T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.ITransaction :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.ITransaction :
+        T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.ITransaction :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.ITransaction :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.ITransaction :
         TransactionFactory.ITransaction<any, any, any, any>;
     export type IResult<T> =
+        T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IResult :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IResult :
+        T extends TransactionType.DepositCoin ? ReturnCoinTransactionFactory.IResult :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IResult :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IResult :
         any;
     export type IPotentialActions<T> =
+        T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IPotentialActions :
+        T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IPotentialActions :
         any;
+    export import buyCoin = BuyCoinTransactionFactory;
     export import withdrawCoin = WithdrawCoinTransactionFactory;
+    export import returnCoin = ReturnCoinTransactionFactory;
     export import depositCoin = DepositCoinTransactionFactory;
     export import transferCoin = TransferCoinTransactionFactory;
 }

@@ -3,6 +3,14 @@
  */
 enum TransactionType {
     /**
+     * コイン購入取引
+     */
+    BuyCoin = 'BuyCoin',
+    /**
+     * コイン返金取引
+     */
+    ReturnCoin = 'ReturnCoin',
+    /**
      * コイン出金取引
      */
     WithdrawCoin = 'WithdrawCoin',

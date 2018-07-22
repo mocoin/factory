@@ -9,11 +9,16 @@ import TransactionType from '../../transactionType';
 
 export type IAgent = ActionFactory.IParticipant;
 export type IRecipient = ActionFactory.IParticipant;
+export enum LocationType {
+    Anonymous = 'Anonymous',
+    PaymentMethod = 'PaymentMethod',
+    CoinAccount = 'CoinAccount'
+}
 /**
  * 口座以外の匿名場所インターフェース
  */
 export interface IAnonymousLocation {
-    typeOf: string;
+    typeOf: LocationType.Anonymous;
     id?: string;
     name?: string;
 }
@@ -21,7 +26,11 @@ export interface IAnonymousLocation {
  * 転送元と転送先のロケーションインターフェース
  * コイン口座あるいは、連携済の決済方法を指定可能
  */
-export type ILocation = IAnonymousLocation | IPaymentMethod<PaymentMethodType> | IAccount<AccountGoodType.CoinAccount>;
+export type ILocation<T extends LocationType> =
+    T extends LocationType.Anonymous ? IAnonymousLocation :
+    T extends LocationType.PaymentMethod ? IPaymentMethod<PaymentMethodType> :
+    T extends LocationType.CoinAccount ? IAccount<AccountGoodType.CoinAccount> :
+    never;
 export type IObject = any;
 export type IResult = any;
 export type IPotentialActions = any;
@@ -39,7 +48,6 @@ export interface IPurpose {
      */
     id: string;
 }
-
 export interface IAttributes extends ActionFactory.IAttributes<IObject, IResult> {
     typeOf: ActionType.MoneyTransfer;
     /**
@@ -53,11 +61,10 @@ export interface IAttributes extends ActionFactory.IAttributes<IObject, IResult>
     /**
      * 転送元
      */
-    fromLocation: ILocation;
+    fromLocation: ILocation<LocationType>;
     /**
      * 転送先
      */
-    toLocation: ILocation;
+    toLocation: ILocation<LocationType>;
 }
-
 export type IAction = ActionFactory.IAction<IAttributes>;

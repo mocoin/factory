@@ -4,7 +4,7 @@ import * as ActionFactory from '../../../../action';
 import ActionType from '../../../../actionType';
 import { IPaymentMethod } from '../../../../ownershipInfo';
 import PaymentMethodType from '../../../../paymentMethodType';
-import { ITransaction as ITransferCoinTransaction } from '../../../../transaction/transferCoin';
+import { ITransaction as IBuyCoinTransaction } from '../../../../transaction/buyCoin';
 import * as AuthorizeActionFactory from '../../../authorize';
 import AuthorizeWithdrawActionObjectType from '../objectType';
 
@@ -30,7 +30,7 @@ export interface IObject {
     fromLocation: ILocation;
     notes: string;
 }
-export type IPurpose = ITransferCoinTransaction;
+export type IPurpose = IBuyCoinTransaction;
 export type IError = any;
 /**
  * 銀行口座出金承認アクション属性

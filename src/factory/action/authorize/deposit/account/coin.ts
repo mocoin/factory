@@ -3,8 +3,8 @@ import * as pecorinoFactory from '@motionpicture/pecorino-factory';
 import * as ActionFactory from '../../../../action';
 import ActionType from '../../../../actionType';
 import { AccountGoodType, IAccount } from '../../../../ownershipInfo';
+import { ITransaction as IBuyCoinTransaction } from '../../../../transaction/buyCoin';
 import { ITransaction as IDepositCoinTransaction } from '../../../../transaction/depositCoin';
-import { ITransaction as ITransferCoinTransaction } from '../../../../transaction/transferCoin';
 import * as AuthorizeActionFactory from '../../../authorize';
 import AuthorizeDepositActionObjectType from '../objectType';
 
@@ -29,7 +29,7 @@ export interface IObject {
     toLocation: ILocation;
     notes: string;
 }
-export type IPurpose = IDepositCoinTransaction | ITransferCoinTransaction;
+export type IPurpose = IDepositCoinTransaction | IBuyCoinTransaction;
 export type IError = any;
 /**
  * コイン口座入金承認アクション属性インターフェース
