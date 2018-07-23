@@ -9,6 +9,8 @@ import * as AuthorizeActionFactory from './factory/action/authorize';
 import * as AuthorizeDepositCoinAccountActionFactory from './factory/action/authorize/deposit/account/coin';
 import AuthorizeDepositActionObjectType from './factory/action/authorize/deposit/objectType';
 import * as AuthorizeDepositBankAccountPaymentActionFactory from './factory/action/authorize/deposit/paymentMethod/bankAccount';
+import * as AuthorizeTransferCoinAccountActionFactory from './factory/action/authorize/transfer/account/coin';
+import AuthorizeTransferActionObjectType from './factory/action/authorize/transfer/objectType';
 import * as AuthorizeWithdrawCoinAccountActionFactory from './factory/action/authorize/withdraw/account/coin';
 import AuthorizeWithdrawActionObjectType from './factory/action/authorize/withdraw/objectType';
 import * as AuthorizeWithdrawBankAccountPaymentActionFactory from './factory/action/authorize/withdraw/paymentMethod/bankAccount';
@@ -84,6 +86,12 @@ export namespace action {
             }
             export namespace paymentMethod {
                 export import bankAccount = AuthorizeDepositBankAccountPaymentActionFactory;
+            }
+        }
+        export namespace transfer {
+            export import ObjectType = AuthorizeTransferActionObjectType;
+            export namespace account {
+                export import coin = AuthorizeTransferCoinAccountActionFactory;
             }
         }
         export namespace withdraw {
