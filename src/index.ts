@@ -180,41 +180,42 @@ export import taskExecutionResult = TaskExecutionResultFactory;
 export import taskName = TaskName;
 export import taskStatus = TaskStatus;
 export namespace transaction {
-    export type IStartParams<T> =
+    export type IStartParams<T extends TransactionType> =
         T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IStartParams :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IStartParams :
         T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.IStartParams :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IStartParams :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IStartParams :
         TransactionFactory.IStartParams<TransactionType, any, any, any>;
-    export type IAttributes<T> =
+    export type IAttributes<T extends TransactionType> =
         T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IAttributes :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IAttributes :
         T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.IAttributes :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IAttributes :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IAttributes :
         TransactionFactory.IAttributes<any, any, any, any>;
-    export type ITransaction<T> =
+    export type ITransaction<T extends TransactionType> =
         T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.ITransaction :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.ITransaction :
         T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.ITransaction :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.ITransaction :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.ITransaction :
         TransactionFactory.ITransaction<any, any, any, any>;
-    export type IResult<T> =
+    export type IResult<T extends TransactionType> =
         T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IResult :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IResult :
         T extends TransactionType.DepositCoin ? ReturnCoinTransactionFactory.IResult :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IResult :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IResult :
         any;
-    export type IPotentialActions<T> =
+    export type IPotentialActions<T extends TransactionType> =
         T extends TransactionType.BuyCoin ? BuyCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.DepositCoin ? DepositCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.ReturnCoin ? ReturnCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.WithdrawCoin ? WithdrawCoinTransactionFactory.IPotentialActions :
         T extends TransactionType.TransferCoin ? TransferCoinTransactionFactory.IPotentialActions :
         any;
+    export type ITokenizedTransaction = TransactionFactory.ITokenizedTransaction;
     export import buyCoin = BuyCoinTransactionFactory;
     export import withdrawCoin = WithdrawCoinTransactionFactory;
     export import returnCoin = ReturnCoinTransactionFactory;

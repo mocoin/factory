@@ -72,3 +72,9 @@ export type IAttributes<TStartParams, TResult, TError, TPotentialActions> = TSta
      */
     potentialActions?: TPotentialActions;
 };
+/**
+ * トークン化された取引インターフェース
+ */
+export interface ITokenizedTransaction {
+    token: string;
+}
