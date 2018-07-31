@@ -1,4 +1,4 @@
-# Mocoin factory library for javascript
+# Mocoin Factory Library for Javascript
 
 [![Coverage Status](https://coveralls.io/repos/github/mocoin/factory/badge.svg?branch=develop)](https://coveralls.io/github/mocoin/factory?branch=develop)
 

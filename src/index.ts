@@ -2,8 +2,9 @@
 /**
  * index module
  */
-import * as pecorinoFactory from '@motionpicture/pecorino-factory';
+import * as pecorinoFactory from '@pecorino/factory';
 
+import AccountType from './factory/accountType';
 import * as ActionFactory from './factory/action';
 import * as AuthorizeActionFactory from './factory/action/authorize';
 import * as AuthorizeDepositCoinAccountActionFactory from './factory/action/authorize/deposit/account/coin';
@@ -69,6 +70,7 @@ export import pecorino = pecorinoFactory;
 export import errors = errors;
 export import errorCode = ErrorCode;
 
+export import accountType = AccountType;
 export import actionStatusType = ActionStatusType;
 export import actionType = ActionType;
 export namespace action {

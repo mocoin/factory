@@ -1,5 +1,6 @@
-import * as pecorinoFactory from '@motionpicture/pecorino-factory';
+import * as pecorinoFactory from '@pecorino/factory';
 
+import AccountType from '../../../../accountType';
 import * as ActionFactory from '../../../../action';
 import ActionType from '../../../../actionType';
 import { IPaymentMethod } from '../../../../ownershipInfo';
@@ -15,7 +16,7 @@ export type IRecipient = ActionFactory.IParticipant;
  * 実体としてはPecorino出金取引
  */
 export interface IResult {
-    pecorinoTransaction: pecorinoFactory.transaction.withdraw.ITransaction;
+    pecorinoTransaction: pecorinoFactory.transaction.withdraw.ITransaction<AccountType.Default>;
     pecorinoEndpoint: string;
     amount: number;
 }
