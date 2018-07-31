@@ -1,9 +1,10 @@
 /**
  * コイン転送アクションファクトリー
  */
+import AccountType from '../../accountType';
 import * as ActionFactory from '../../action';
 import ActionType from '../../actionType';
-import { AccountGoodType, IAccount, IPaymentMethod } from '../../ownershipInfo';
+import { IAccount, IPaymentMethod } from '../../ownershipInfo';
 import PaymentMethodType from '../../paymentMethodType';
 import TransactionType from '../../transactionType';
 
@@ -29,7 +30,7 @@ export interface IAnonymousLocation {
 export type ILocation<T extends LocationType> =
     T extends LocationType.Anonymous ? IAnonymousLocation :
     T extends LocationType.PaymentMethod ? IPaymentMethod<PaymentMethodType> :
-    T extends LocationType.CoinAccount ? IAccount<AccountGoodType.CoinAccount> :
+    T extends LocationType.CoinAccount ? IAccount<AccountType.Coin> :
     never;
 export type IObject = any;
 export type IResult = any;

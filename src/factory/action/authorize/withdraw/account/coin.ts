@@ -3,7 +3,7 @@ import * as pecorinoFactory from '@pecorino/factory';
 import AccountType from '../../../../accountType';
 import * as ActionFactory from '../../../../action';
 import ActionType from '../../../../actionType';
-import { AccountGoodType, IAccount } from '../../../../ownershipInfo';
+import { IAccount } from '../../../../ownershipInfo';
 import { ITransaction as IReturnCoinTransaction } from '../../../../transaction/returnCoin';
 import { ITransaction as IWithdrawCoinTransaction } from '../../../../transaction/withdrawCoin';
 import * as AuthorizeActionFactory from '../../../authorize';
@@ -20,7 +20,7 @@ export interface IResult {
     pecorinoEndpoint: string;
     amount: number;
 }
-export type ILocation = IAccount<AccountGoodType.CoinAccount>;
+export type ILocation = IAccount<AccountType.Coin>;
 /**
  * 承認対象
  */

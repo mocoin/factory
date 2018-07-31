@@ -1,3 +1,4 @@
+import AccountType from './accountType';
 import { IOrganization } from './organization';
 import PaymentMethodType from './paymentMethodType';
 import { IPerson } from './person';
@@ -8,22 +9,19 @@ import { IProgramMembership, ProgramMembershipType } from './programMembership';
  */
 export enum AccountGoodType {
     /**
-     * コイン口座
+     * 口座
      */
-    CoinAccount = 'CoinAccount',
-    /**
-     * ポイント口座
-     */
-    PointAccount = 'PointAccount'
+    Account = 'Account'
 }
 /**
  * 口座インターフェース
  */
-export interface IAccount<T extends AccountGoodType> {
+export interface IAccount<T extends AccountType> {
+    typeOf: AccountGoodType.Account;
     /**
      * 口座タイプ
      */
-    typeOf: T;
+    accountType: T;
     /**
      * 口座番号
      */
@@ -39,6 +37,10 @@ export interface IBankAccountPaymentMethod {
      * 決済方法タイプ
      */
     paymentMethodType: PaymentMethodType.BankAccount;
+    /**
+     * 口座タイプ
+     */
+    accountType: AccountType.Default;
     /**
      * 口座番号
      */
@@ -72,7 +74,7 @@ export type IGood<T extends IGoodType> =
     /**
      * 口座タイプの場合
      */
-    T extends AccountGoodType ? IAccount<T> :
+    T extends AccountGoodType.Account ? IAccount<AccountType> :
     never;
 /**
  * 所有者インターフェース
